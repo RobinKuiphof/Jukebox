@@ -23,4 +23,6 @@ Auth::routes();
 // Route::get('/songs', 'indexController@index')->middleware('auth');
 Route::get('/songs', [App\Http\Controllers\indexController::class, 'index'])->middleware('auth');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get(' /home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get(' /song/{song}', [App\Http\Controllers\Songcontroller::class, 'show']);
+Route::get(' /artist/{artist}', [App\Http\Controllers\ArtistsController::class, 'show']);
