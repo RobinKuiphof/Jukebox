@@ -25,4 +25,4 @@ Route::get('/songs', [App\Http\Controllers\indexController::class, 'index'])->mi
 
 Route::get(' /home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get(' /song/{song}', [App\Http\Controllers\Songcontroller::class, 'show']);
-Route::get(' /artist/{artist}', [App\Http\Controllers\ArtistsController::class, 'show']);
+Route::get(' /playlist/{playlist}', [App\Http\Controllers\Playlistcontroller::class, 'show']);

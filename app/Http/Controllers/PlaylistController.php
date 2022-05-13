@@ -46,7 +46,7 @@ class PlaylistController extends Controller
      */
     public function show(Playlist $playlist)
     {
-        //
+        return dd($playlist->song);
     }
 
     /**
