@@ -11286,3 +11286,18 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+
+table td{
+    border: solid black 1px;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+
+h3{
+    font-size: 20px;
+}
+

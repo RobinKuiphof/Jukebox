@@ -14,7 +14,8 @@ class SongController extends Controller
      */
     public function index()
     {
-        //
+        $song = Song::all();
+        return view('songs', ['songs' => $song]);
     }
 
     /**
@@ -46,7 +47,8 @@ class SongController extends Controller
      */
     public function show(Song $song)
     {
-        return json_encode($song->playlist);
+       // return $song->playlist;
+       return view('song', ['song' => $song]);
     }
 
     /**

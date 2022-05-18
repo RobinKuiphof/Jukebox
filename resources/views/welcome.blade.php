@@ -24,8 +24,8 @@
         <div class="container">
 
             <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                <a href="{{ url('/playlist') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">songs</a>
-                <a href="{{ url('/playlist') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">playlists</a>
+                <a href="{{ url('/song') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Songs</a>
+                <a href="{{ url('/playlist') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Playlists</a>
                 @if (Route::has('login'))
                     @auth
                         <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>

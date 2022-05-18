@@ -12,9 +12,10 @@ class PlaylistController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Playlist $playlist)
     {
-        //
+        $playlists = playlist::all();
+        return view('playlists', ['playlists' => $playlists]);
     }
 
     /**
