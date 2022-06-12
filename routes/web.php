@@ -25,5 +25,5 @@ Route::get(' /home', [App\Http\Controllers\HomeController::class, 'index'])->nam
 Route::get(' /song', [App\Http\Controllers\Songcontroller::class, 'index'])->middleware('auth');
 Route::get(' /song/{song}', [App\Http\Controllers\Songcontroller::class, 'show'])->middleware('auth');
 Route::get(' /playlist', [App\Http\Controllers\Playlistcontroller::class, 'index'])->middleware('auth');
-Route::get(' /playlist/delete/{song}', [App\Http\Controllers\Playlistcontroller::class, 'destroy'])->middleware('auth');
+Route::get(' /playlist/delete/{song}', [App\Http\Controllers\Songcontroller::class, 'destroy'])->middleware('auth');
 Route::get(' /playlist/{playlist}', [App\Http\Controllers\Playlistcontroller::class, 'show'])->middleware('auth');

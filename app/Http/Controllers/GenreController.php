@@ -2,22 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Playlist;
-use App\Models\Playlists;
+use App\Models\Genre;
 use Illuminate\Http\Request;
 
-class PlaylistController extends Controller
+class GenreController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Playlist $playlist)
+    public function index()
     {
-        $playlists = playlist::all();
-  
-        return view('playlists', ['playlists' => $playlists]);
+        //
     }
 
     /**
@@ -44,21 +41,21 @@ class PlaylistController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Playlist  $playlist
+     * @param  \App\Models\Genre  $genre
      * @return \Illuminate\Http\Response
      */
-    public function show(Playlist $playlist)
+    public function show(Genre $genre)
     {
-        return view('playlist', ['song' => $playlist->song]);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Playlist  $playlist
+     * @param  \App\Models\Genre  $genre
      * @return \Illuminate\Http\Response
      */
-    public function edit(Playlist $playlist)
+    public function edit(Genre $genre)
     {
         //
     }
@@ -67,10 +64,10 @@ class PlaylistController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Playlist  $playlist
+     * @param  \App\Models\Genre  $genre
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Playlist $playlist)
+    public function update(Request $request, Genre $genre)
     {
         //
     }
@@ -78,11 +75,11 @@ class PlaylistController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Playlist  $playlist
+     * @param  \App\Models\Genre  $genre
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Playlist $playlist)
+    public function destroy(Genre $genre)
     {
-        // $playlist->song()->detach();
+        //
     }
 }

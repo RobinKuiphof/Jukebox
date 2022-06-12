@@ -82,6 +82,7 @@ class SongController extends Controller
      */
     public function destroy(Song $song)
     {
-        //
+        $song->playlist()->detach();  
+        return redirect()->back();
     }
 }
