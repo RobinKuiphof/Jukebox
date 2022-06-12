@@ -47,7 +47,7 @@ class PlaylistController extends Controller
      */
     public function show(Playlist $playlist)
     {
-        return dd($playlist->song);
+        return view('playlist', ['song' => $playlist->song]);
     }
 
     /**
@@ -81,6 +81,6 @@ class PlaylistController extends Controller
      */
     public function destroy(Playlist $playlist)
     {
-        //
+        dd();
     }
 }

@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\welcome;
-
+use App\Models\Song;
+use App\Models\Playlist;
 use Illuminate\Http\Request;
+
 
 class WelcomeController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -45,13 +48,13 @@ class WelcomeController extends Controller
      * @param  \App\Models\welcome  $welcome
      * @return \Illuminate\Http\Response
      */
-    // use App\Models\Playlists;
-    use App\Models\Song;
 
-    public function show(welcome $welcome, Song $songs)
+
+    public function show(welcome $welcome, Song $song, Playlist $playlists)
     {
-        dd($songs);
-        return view('welcome', ['songs' => $songs, 'playlists' => $playlists]);
+        $song = $song::all();
+        $playlists = $playlists::all();
+        return view('welcome', ['songs' => $song, 'playlists' => $playlists]);
     }
 
     /**
