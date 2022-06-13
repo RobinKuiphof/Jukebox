@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Que;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use App\Models\Song;
+
 
 class QueController extends Controller
 {
@@ -15,7 +17,8 @@ class QueController extends Controller
      */
     public function index()
     {
-        $session = Session::get('que');
+        
+       
     }
 
     /**
@@ -51,9 +54,19 @@ class QueController extends Controller
      * @param  \App\Models\Que  $que
      * @return \Illuminate\Http\Response
      */
-    public function show(Que $que)
+    public function show(Song $playlist)
     {
-        //
+        
+        $session = Session::get('que');
+        $songs = $playlist::find($session);
+
+        $duration = 0;
+        foreach($songs as $test){
+            $duration += $test->duration;
+        }
+        $duration = gmdate("H:i:s", $duration);
+        
+        return view('que', ['song' => $songs, 'duration' => $duration]);
     }
 
     /**
@@ -85,8 +98,19 @@ class QueController extends Controller
      * @param  \App\Models\Que  $que
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Que $que)
+    public function destroy($que)
     {
-        //
+        
+        $session = Session::get('que');
+        $list = [];
+        foreach($session as $song){
+            if($song != $que){
+               
+                array_push($list, $song);
+            }
+        }
+        session(['que' => $list]);
+        return redirect()->back();
+
     }
 }

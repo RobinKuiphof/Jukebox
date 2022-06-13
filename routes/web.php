@@ -29,4 +29,5 @@ Route::get(' /playlist/delete/{song}', [App\Http\Controllers\Songcontroller::cla
 Route::get(' /playlist/{playlist}', [App\Http\Controllers\Playlistcontroller::class, 'show'])->middleware('auth');
 Route::get(' /genre/{genre}', [App\Http\Controllers\Genrecontroller::class, 'show'])->middleware('auth');
 Route::get(' /que/add/{que}', [App\Http\Controllers\Quecontroller::class, 'store'])->middleware('auth');
-Route::get(' /que', [App\Http\Controllers\Quecontroller::class, 'index'])->middleware('auth');
+Route::get(' /que/delete/{que}', [App\Http\Controllers\Quecontroller::class, 'destroy'])->middleware('auth');
+Route::get(' /que', [App\Http\Controllers\Quecontroller::class, 'show'])->middleware('auth');

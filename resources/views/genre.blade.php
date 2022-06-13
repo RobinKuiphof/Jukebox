@@ -21,7 +21,7 @@
                 <td>{{$song[$i]->artist}}</td>
                 <td>{{$song[$i]->duration}}</td>
                 <td><a href="/song/{{$song[$i]->id}}" >Details</a></td>
-                <td><a>Play</a></td>
+                <td><a href="/que/add/{{$song[$i]->id}}">Play</a></td>
             </tr>
         @endfor
     </table>
