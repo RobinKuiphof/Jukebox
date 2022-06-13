@@ -49,7 +49,13 @@ class PlaylistController extends Controller
      */
     public function show(Playlist $playlist)
     {
-        return view('playlist', ['song' => $playlist->song]);
+        $duration = 0;
+        foreach($playlist->song as $song){
+            $duration += $song->duration;
+        }
+        $duration = gmdate("H:i:s", $duration);
+
+        return view('playlist', ['song' => $playlist->song, 'duration' => $duration, 'playlist' => $playlist]);
     }
 
     /**

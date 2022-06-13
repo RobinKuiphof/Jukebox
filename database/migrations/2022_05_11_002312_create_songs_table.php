@@ -16,8 +16,11 @@ return new class extends Migration
         Schema::create('songs', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('artist');
+            $table->unsignedBigInteger('genre_id');
             $table->integer('duration');
             $table->timestamps();
+            $table->foreign('genre_id')->references('id')->on('genres');
         });
     }
 

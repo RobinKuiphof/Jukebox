@@ -2,17 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\welcome;
-use App\Models\Song;
-use App\Models\Playlist;
-use App\Models\Genre;
+use App\Models\Que;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-
-class WelcomeController extends Controller
+class QueController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -20,7 +15,7 @@ class WelcomeController extends Controller
      */
     public function index()
     {
-        //
+        $session = Session::get('que');
     }
 
     /**
@@ -39,38 +34,35 @@ class WelcomeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $que)
     {
-        //
+        $session = Session::get('que');
+        if(empty($session)){
+            $session = [];
+        }
+        array_push($session, $que);
+        session(['que' => $session]);
+        return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\welcome  $welcome
+     * @param  \App\Models\Que  $que
      * @return \Illuminate\Http\Response
      */
-
-
-    public function show(welcome $welcome, Song $song, Playlist $playlists, Genre $genre)
+    public function show(Que $que)
     {
-        $genre = $genre::all();
-        $song = $song::all();
-        $playlists = $playlists::all();
-        $session = Session::get('que');
-        if(!empty($session)){
-            $que = Song::find($session);
-        }
-        return view('welcome', ['songs' => $song, 'playlists' => $playlists, 'genre' => $genre, 'session' => $session,  'que' =>$que]);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\welcome  $welcome
+     * @param  \App\Models\Que  $que
      * @return \Illuminate\Http\Response
      */
-    public function edit(welcome $welcome)
+    public function edit(Que $que)
     {
         //
     }
@@ -79,21 +71,21 @@ class WelcomeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\welcome  $welcome
+     * @param  \App\Models\Que  $que
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, welcome $welcome)
+    public function update(Request $request, $que)
     {
-        //
+      
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\welcome  $welcome
+     * @param  \App\Models\Que  $que
      * @return \Illuminate\Http\Response
      */
-    public function destroy(welcome $welcome)
+    public function destroy(Que $que)
     {
         //
     }
