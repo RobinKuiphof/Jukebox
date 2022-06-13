@@ -46,7 +46,13 @@ class GenreController extends Controller
      */
     public function show(Genre $genre)
     {
-        //
+        $duration = 0;
+        foreach($genre->song as $song){
+            $duration += $song->duration;
+        }
+        $duration = gmdate("H:i:s", $duration);
+
+        return view('genre', ['song' => $genre->song, 'genre' => $genre, 'duration' => $duration]);
     }
 
     /**
