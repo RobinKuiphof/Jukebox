@@ -5,12 +5,12 @@
 
 <div class="container">
     <h1>Genre: {{$genre->name}} Duration: {{$duration}}</h1>
-  
+
     <table>
         <tr>
             <th>Song</th>
-            <th>Duration</th>
             <th>Artist</th>
+            <th>Duration</th>
             <th>Details</th>
             <th>Play</th>
 
