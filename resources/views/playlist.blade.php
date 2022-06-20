@@ -4,7 +4,7 @@
 
 
 <div class="container">
-    <h1>Playlist: {{$playlist->name}} Duration: {{$duration}}</h1>
+    <h1>Playlist: <a href="update/{{$playlist->id}}">{{$playlist->name}}</a> Duration: {{$duration}}</h1>
     <table>
         <tr>
             <th>Song:</th>
@@ -27,6 +27,7 @@
             </tr>
         @endfor
     </table>
+    <a class="btn btn-primary" href="add/{{$playlist->id}}">Add song</a>
 </div>
 @endsection
 

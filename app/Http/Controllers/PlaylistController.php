@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Playlist;
 use App\Models\Playlists;
 use Illuminate\Http\Request;
+use App\Models\Song;
 use Illuminate\Support\Facades\Session;
 
 class PlaylistController extends Controller
@@ -19,6 +20,18 @@ class PlaylistController extends Controller
         $playlists = playlist::all();
 
         return view('playlists', ['playlists' => $playlists]);
+    }
+
+
+    public function addsong(Playlist $playlist){
+        $songs = Song::all();
+        return view('Playlistaddsong', ['songs' => $songs, 'playlist' => $playlist]);
+    }
+
+
+    public function addsongtoplaylist(Playlist $playlist, $song_id){
+        $playlist->song()->attach($song_id);
+        return redirect('../../playlist/'. $playlist->id);
     }
 
     /**
@@ -73,7 +86,7 @@ class PlaylistController extends Controller
      */
     public function edit(Playlist $playlist)
     {
-        //
+        return view('playlistupdate', ['playlist' => $playlist]);
     }
 
     /**
@@ -85,7 +98,9 @@ class PlaylistController extends Controller
      */
     public function update(Request $request, Playlist $playlist)
     {
-        //
+       $playlist->name = request('name');
+       $playlist->save();
+       return redirect('../../');
     }
 
     /**

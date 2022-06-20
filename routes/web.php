@@ -24,6 +24,11 @@ Route::get('/songs', [App\Http\Controllers\indexController::class, 'index'])->mi
 Route::get(' /home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get(' /song', [App\Http\Controllers\Songcontroller::class, 'index'])->middleware('auth');
 Route::get(' /song/{song}', [App\Http\Controllers\Songcontroller::class, 'show'])->middleware('auth');
+Route::get(' /playlist/update/{playlist}', [App\Http\Controllers\Playlistcontroller::class, 'edit'])->middleware('auth');
+Route::Post(' /playlist/edit/{playlist}', [App\Http\Controllers\Playlistcontroller::class, 'update'])->middleware('auth');
+Route::get(' /playlist/add/{playlist}/{song_id}', [App\Http\Controllers\Playlistcontroller::class, 'addsongtoplaylist'])->middleware('auth');
+Route::get(' /playlist/add/{playlist}', [App\Http\Controllers\Playlistcontroller::class, 'addsong'])->middleware('auth');
+
 Route::get(' /playlist', [App\Http\Controllers\Playlistcontroller::class, 'index'])->middleware('auth');
 Route::get(' /playlist/delete/{song}', [App\Http\Controllers\Songcontroller::class, 'destroy'])->middleware('auth');
 Route::get(' /playlist/{playlist}', [App\Http\Controllers\Playlistcontroller::class, 'show'])->middleware('auth');
@@ -34,4 +39,5 @@ Route::get(' /que/delete/{que}', [App\Http\Controllers\Quecontroller::class, 'de
 Route::get(' /que/create', [App\Http\Controllers\Playlistcontroller::class, 'create'])->middleware('auth');
 Route::post('/que/store', [App\Http\Controllers\Playlistcontroller::class, 'store'])->middleware('auth');
 Route::get(' /que', [App\Http\Controllers\Quecontroller::class, 'show'])->middleware('auth');
+
 
