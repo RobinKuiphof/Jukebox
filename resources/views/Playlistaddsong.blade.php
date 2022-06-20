@@ -5,6 +5,7 @@
 
 <div class="container">
     <table class="m-auto">
+
         @for($i=0; $i<count($songs); $i++)
             <tr>
                 <th>{{$songs[$i]->name}}</th>

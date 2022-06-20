@@ -19,7 +19,7 @@
             <td>{{$song->updated_at}}</td>
             <td>{{$song->artist}}</td>
             <td>{{$song->duration}}</td>
-            <td><a href="/que/add/{{$song[$i]->id}}"></td>
+            <td><a href="/que/add/{{$song->id}}"></td>
         </tr>
     </table>
 </div>
