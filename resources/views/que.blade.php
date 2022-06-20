@@ -5,6 +5,7 @@
 
 <div class="container">
     <h1>Duration: {{$duration}}</h1>
+    <h2><a class="btn btn-success color-danger" href="que/create">Save que as playlist</a></h2>
     <table>
         <tr>
             <th>Song:</th>

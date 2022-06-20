@@ -5,6 +5,7 @@
 
 <div class="container">
     <h1>Genre: {{$genre->name}} Duration: {{$duration}}</h1>
+  
     <table>
         <tr>
             <th>Song</th>

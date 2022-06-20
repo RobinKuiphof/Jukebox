@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Playlist;
 use App\Models\Playlists;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class PlaylistController extends Controller
 {
@@ -16,7 +17,7 @@ class PlaylistController extends Controller
     public function index(Playlist $playlist)
     {
         $playlists = playlist::all();
-  
+
         return view('playlists', ['playlists' => $playlists]);
     }
 
@@ -27,7 +28,7 @@ class PlaylistController extends Controller
      */
     public function create()
     {
-        //
+        return view('createque');
     }
 
     /**
@@ -38,7 +39,13 @@ class PlaylistController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $playlist = new Playlist();
+        $playlist->name = request('name');
+        $playlist->save();
+
+        $playlist->song()->attach(Session::get('que'));
+        $request->session()->forget('que');
+        return redirect('../');
     }
 
     /**

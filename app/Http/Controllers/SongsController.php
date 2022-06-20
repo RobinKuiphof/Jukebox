@@ -2,17 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\welcome;
-use App\Models\Song;
-use App\Models\Playlist;
-use App\Models\Genre;
+use App\Models\songs;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 
-
-class WelcomeController extends Controller
+class SongsController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -47,32 +41,21 @@ class WelcomeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\welcome  $welcome
+     * @param  \App\Models\songs  $songs
      * @return \Illuminate\Http\Response
      */
-
-
-    public function show(welcome $welcome, Song $song, Playlist $playlists, Genre $genre)
+    public function show(songs $songs)
     {
-        $genre = $genre::all();
-        $song = $song::all();
-        $playlists = $playlists::all();
-        $session = Session::get('que');
-        if(!empty($session)){
-            $que = Song::find($session);
-        }else{
-            return view('welcome', ['songs' => $song, 'playlists' => $playlists, 'genre' => $genre, 'session' => $session]);
-        }
-        return view('welcome', ['songs' => $song, 'playlists' => $playlists, 'genre' => $genre, 'session' => $session,  'que' =>$que]);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\welcome  $welcome
+     * @param  \App\Models\songs  $songs
      * @return \Illuminate\Http\Response
      */
-    public function edit(welcome $welcome)
+    public function edit(songs $songs)
     {
         //
     }
@@ -81,10 +64,10 @@ class WelcomeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\welcome  $welcome
+     * @param  \App\Models\songs  $songs
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, welcome $welcome)
+    public function update(Request $request, songs $songs)
     {
         //
     }
@@ -92,10 +75,10 @@ class WelcomeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\welcome  $welcome
+     * @param  \App\Models\songs  $songs
      * @return \Illuminate\Http\Response
      */
-    public function destroy(welcome $welcome)
+    public function destroy(songs $songs)
     {
         //
     }
