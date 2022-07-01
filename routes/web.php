@@ -32,6 +32,7 @@ Route::get(' /playlist/add/{playlist}', [App\Http\Controllers\Playlistcontroller
 Route::get(' /playlist', [App\Http\Controllers\Playlistcontroller::class, 'index'])->middleware('auth');
 Route::get(' /playlist/delete/{song}', [App\Http\Controllers\Songcontroller::class, 'destroy'])->middleware('auth');
 Route::get(' /playlist/{playlist}', [App\Http\Controllers\Playlistcontroller::class, 'show'])->middleware('auth');
+Route::get(' /playlist/{playlist}/delete', [App\Http\Controllers\Playlistcontroller::class, 'destroy'])->middleware('auth');
 Route::get(' /genre/{genre}', [App\Http\Controllers\Genrecontroller::class, 'show']);
 
 Route::get(' /que/add/{que}', [App\Http\Controllers\Quecontroller::class, 'store']);

@@ -6,6 +6,8 @@ use App\Models\Que;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\Song;
+use App\Models\PlaylistSession;
+
 
 
 class QueController extends Controller
@@ -17,8 +19,8 @@ class QueController extends Controller
      */
     public function index()
     {
-        
-       
+
+
     }
 
     /**
@@ -39,13 +41,7 @@ class QueController extends Controller
      */
     public function store(Request $request, $que)
     {
-        $session = Session::get('que');
-        if(empty($session)){
-            $session = [];
-        }
-        array_push($session, $que);
-        session(['que' => $session]);
-        return redirect()->back();
+        return PlaylistSession::addSongToSession($que);
     }
 
     /**
@@ -56,7 +52,7 @@ class QueController extends Controller
      */
     public function show(Song $playlist)
     {
-        
+
         $session = Session::get('que');
         $songs = $playlist::find($session);
 
@@ -65,7 +61,7 @@ class QueController extends Controller
             $duration += $test->duration;
         }
         $duration = gmdate("H:i:s", $duration);
-        
+
         return view('que', ['song' => $songs, 'duration' => $duration]);
     }
 
@@ -89,7 +85,7 @@ class QueController extends Controller
      */
     public function update(Request $request, $que)
     {
-      
+
     }
 
     /**
@@ -100,12 +96,12 @@ class QueController extends Controller
      */
     public function destroy($que)
     {
-        
+
         $session = Session::get('que');
         $list = [];
         foreach($session as $song){
             if($song != $que){
-               
+
                 array_push($list, $song);
             }
         }

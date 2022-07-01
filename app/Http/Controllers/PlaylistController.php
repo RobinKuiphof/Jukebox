@@ -7,6 +7,11 @@ use App\Models\Playlists;
 use Illuminate\Http\Request;
 use App\Models\Song;
 use Illuminate\Support\Facades\Session;
+use App\Models\PlaylistSession;
+use Illuminate\Support\Facades\Auth;
+
+
+
 
 class PlaylistController extends Controller
 {
@@ -54,10 +59,15 @@ class PlaylistController extends Controller
     {
         $playlist = new Playlist();
         $playlist->name = request('name');
+        $playlist->user_id = Auth::id();
         $playlist->save();
 
-        $playlist->song()->attach(Session::get('que'));
-        $request->session()->forget('que');
+        $session = PlaylistSession::getSession();
+
+        $playlist->song()->attach($session);
+
+        PlaylistSession::clearSession($request);
+
         return redirect('../');
     }
 
@@ -111,6 +121,8 @@ class PlaylistController extends Controller
      */
     public function destroy(Playlist $playlist)
     {
-        // $playlist->song()->detach();
+        $playlist->song()->detach();
+        $playlist->delete();
+        return redirect('/');
     }
 }

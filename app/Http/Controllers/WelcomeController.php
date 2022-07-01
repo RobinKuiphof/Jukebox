@@ -8,7 +8,7 @@ use App\Models\Playlist;
 use App\Models\Genre;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-
+use Illuminate\Support\Facades\Auth;
 
 class WelcomeController extends Controller
 {
@@ -56,7 +56,8 @@ class WelcomeController extends Controller
     {
         $genre = $genre::all();
         $song = $song::all();
-        $playlists = $playlists::all();
+        $playlists = $playlists::where('user_id' , '=', Auth::id())->get();
+
         $session = Session::get('que');
         if(!empty($session)){
             $que = Song::find($session);

@@ -5,6 +5,7 @@
 
 <div class="container">
     <h1>Playlist: <a href="update/{{$playlist->id}}">{{$playlist->name}}</a> Duration: {{$duration}}</h1>
+    <h1><a href="{{$playlist->id}}/delete">Delete</a></h1>
     <table>
         <tr>
             <th>Song:</th>
