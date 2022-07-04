@@ -35,10 +35,10 @@ Route::get(' /playlist/{playlist}', [App\Http\Controllers\Playlistcontroller::cl
 Route::get(' /playlist/{playlist}/delete', [App\Http\Controllers\Playlistcontroller::class, 'destroy'])->middleware('auth');
 Route::get(' /genre/{genre}', [App\Http\Controllers\Genrecontroller::class, 'show']);
 
-Route::get(' /que/add/{que}', [App\Http\Controllers\Quecontroller::class, 'store']);
-Route::get(' /que/delete/{que}', [App\Http\Controllers\Quecontroller::class, 'destroy']);
-Route::get(' /que/create', [App\Http\Controllers\Playlistcontroller::class, 'create']);
-Route::post('/que/store', [App\Http\Controllers\Playlistcontroller::class, 'store']);
-Route::get(' /que', [App\Http\Controllers\Quecontroller::class, 'show']);
+Route::get(' /que/add/{que}', [App\Http\Controllers\Quecontroller::class, 'store'])->middleware('auth');
+Route::get(' /que/delete/{que}', [App\Http\Controllers\Quecontroller::class, 'destroy'])->middleware('auth');
+Route::get(' /que/create', [App\Http\Controllers\Playlistcontroller::class, 'create'])->middleware('auth');
+Route::post('/que/store', [App\Http\Controllers\Playlistcontroller::class, 'store'])->middleware('auth');
+Route::get(' /que', [App\Http\Controllers\Quecontroller::class, 'show'])->middleware('auth');
 
 

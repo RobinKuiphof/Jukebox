@@ -53,7 +53,7 @@ class QueController extends Controller
     public function show(Song $playlist)
     {
 
-        $session = Session::get('que');
+        $session = PlaylistSession::getSession();
         $songs = $playlist::find($session);
 
         $duration = 0;
@@ -97,7 +97,7 @@ class QueController extends Controller
     public function destroy($que)
     {
 
-        $session = Session::get('que');
+        $session = PlaylistSession::getSession();
         $list = [];
         foreach($session as $song){
             if($song != $que){
